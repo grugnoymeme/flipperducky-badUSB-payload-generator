@@ -1,0 +1,160 @@
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      background-color: #F8F8F8;
+    }
+
+	mark {
+	  font-weight: bold;
+      background-color: #B5B5B5;
+	}
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h2, h3 {
+      margin-top: 10px;
+    }
+
+	a:link {
+	  font-weight: bold;
+	  text-decoration: none;
+	  color: #00aced;
+	}
+	
+	a:hover {
+	  font-weight: bold;
+	  text-decoration: none;
+	  color: #cc3211;
+	}
+	
+	a:active {
+	  font-weight: bold;
+	  text-decoration: none;
+	  color: #d6f907;
+	}
+	
+	a:visited {
+	  font-weight: bold;
+	  text-decoration: none;
+	  color: #0084b4;
+	}
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #00aced;
+      border-radius: 20px;
+      resize: vertical;
+    }
+
+    .container {
+      margin-bottom: 20px;
+    }
+
+    .other {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15px, 1fr));
+      gap: 5px;
+    }
+
+    .other button {
+      width: 100%;
+      height: 40px;
+      font-size: 12px;
+      font-weight: bold;
+      border: none;
+      background-color: #00aced; /* Light shade of red */
+      color: white; /* White text */
+      cursor: pointer;
+      border-radius: 20px; /* Added rounded corners */
+      box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .other button:hover {
+      background-color: #0084b4; /* COLORE MOUSE HOVER */
+      color: white; /* White text */
+	}
+
+    .other input[type="number"],
+    .other input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #00aced;
+      border-radius: 20px;
+    }
+
+    #createStringButton,
+	#createAltcodeButton,
+    #createRemarkButton,
+	#createAltcharButton;
+    #saveButton {
+      padding: 10px;
+      border: none;
+      background-color: #00aced; /* Light shade of red */
+      color: white; /* White text */
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 20px; /* Added rounded corners */
+    }
+
+    #createStringButton:hover,
+	#createAltcodeButton:hover,
+    #createRemarkButton:hover,
+	#createAltcharButton:hover;
+    #saveButton:hover {
+      background-color: #0084b4; /* COLORE MOUSE HOVER */
+      color: white; /* White text */
+	}
+
+    /* Added new styles for input fields and buttons in the "other" class */
+    .other > input[type="number"],
+    .other > input[type="text"],
+    .other > button {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    .other .large-btn {
+      width: 100%;
+      white-space: normal;
+      line-height: 1.2;
+      border-radius: 20px; /* Added rounded corners */
+    }
+
+    .fixed-header {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 10px;
+      box-shadow:  -2px -14px 24px -8px rgba(0, 0, 0, 0.75);
+      z-index: 9999;
+    }
+
+    /* Added a class to style the save button */
+    .save-button {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+.container.fondo {
+  padding-bottom: 150px;
+}
+
+.other.arrows {
+  padding-top: 20px;
+}
+
+.other.btn {
+  padding-top: 3px;
+}

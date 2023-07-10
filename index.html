@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Create DuckyScript Payload</title>
+		<link rel="stylesheet" href="stile.css">
+	</head>
+	<body>
+		<div class="fixed-header">
+			<b>Output:</b><br />
+			<font size="2" style="opacity:45%"><i>Your badUSB payload will be here. At the end of the process, click "Save", and the download will automatically start. You can also edit manually the script before download.</i></font>
+			<textarea id="output" rows="4" cols="50" placeholder="Here your Payload..."></textarea>
+			<div class="other btn">
+				<button id="saveButton" class="save-button">Save As...</button>
+			</div>
+		</div>
+		<div class="container">
+			<br /><br />
+			<center><img src="img/logo.png"></center>
+		</div>
+		<div class="container">
+			<div class="other">
+				<b>Change ID (VID/PID):</b><br />
+			</div>
+			<div class="other">
+				<font size="2" style="opacity:45%"><i>Vendor<mark>ID</mark> an Product<mark>ID</mark> are codes used to identify your keyboard. <b><u>ONLY</u></b> if you are targeting a <b>macOS</b>, remember to insert the <mark>ID</mark> command, to change <mark>VID</mark> / <mark>PID</mark>, at the top of your code.</i></font>
+			</div>
+			<div class="other btn">
+				<button class="large-btn" onclick="appendToOutput('ID 05ac:021e Apple:Keyboard')">Change VID/PID (macOS ONLY)</button>
+			</div>
+			<div class="other">
+				<font size="2" style="opacity:45%"><i>* You can set custom <mark>ID</mark> of Flipper USB HID device. <mark>ID</mark> command should be in the first line of script, it is executed before script run. Unless your target is a macOS (which requires to specify it at the first line of the payload), VID and PID are hex codes and are mandatory, Manufacturer and Product are text strings and are optional.</i></font>
+			</div>
+		</div>
+		<div class="container">
+			<table border="0" width="100%">
+				<tr valign="top">
+					<td width="50%">
+						<b>Remark (REM):</b><br />
+						<font size="2" style="opacity:45%"><i><mark>REM</mark> is short for Remark and adds a comment to the payload, like a title, the target OS, the functioning of a command or the author's name.</i></font>
+						<div class="other">
+							<textarea id="input" rows="4" cols="50" placeholder="Type your text here."></textarea>
+						</div>
+						<div class="other btn">
+							<table border="0" width="100%">
+								<tr valign="top">
+									<td width="50%">
+										<button id="createRemarkButton">Write Remark</button>
+									</td>
+									<td width="50%">
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<td width="50%">
+						<b>String (STRING/ALTCODE):</b><br />
+						<font size="2" style="opacity:45%"><i><mark>STRING</mark> injects keystrokes, or "types", the given characters (a-z, 0-9, punctuation & specials).<br />
+								<mark>ALTCODE</mark> is used instead of <mark>STRING</mark>, to print text string using "ALT+Numpad" method. It works even if non-US keyboard layout is selected</i></font>
+						<div class="other">
+							<textarea id="inputz" rows="4" cols="50" placeholder="Type your text here."></textarea>
+						</div>
+						<div class="other btn">
+							<table border="0" width="100%">
+								<tr valign="top">
+									<td width="50%">
+										<button id="createStringButton">Write String</button>
+									</td>
+									<td width="50%">
+										<button id="createAltcodeButton">Write Altcode</button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="container">
+			<table border="0" width="100%">
+				<tr valign="top">
+					<td width="33%">
+						<b>Delays:</b><br />
+						<font size="2" style="opacity:45%"><i><mark>DELAY</mark> is expressed in milliseconds (1 sec. = 1000 ms.). The minimum is 100 (0.1 sec.). It increases/decreases by 100 milliseconds each click.<br />
+								<mark>DEFAULT_DELAY</mark> / <mark>DEFAULTDELAY</mark> add delay before every nex command.</i></font>
+						<div class="other">
+							<button onclick="appendToOutput('DELAY ' + document.getElementById('delayInput').value)">DELAY</button>
+							<input id="delayInput" type="number" value="1000" min="100" step="100">
+						</div>
+						<div class="other">
+							<button onclick="appendToOutput('DEFAULT_DELAY ' + document.getElementById('defaultDelayInput').value)">DEFAULT DELAY</button>
+							<input id="defaultDelayInput" type="number" value="1000" min="100" step="100">
+						</div>
+						<div class="other">
+							<button class="large-btn" onclick="appendToOutput('WAIT_FOR_BUTTON_PRESS')">BUTTON_PRESS</button>
+						</div>
+					</td>
+					<td>
+						<b>Misc. Commands:</b><br />
+						<font size="2" style="opacity:45%"><i><mark>REPEAT</mark> is used to repeat the previous command. It expects the number of additional repeats as parameter.<br />
+								<mark>ALTCHAR</mark> is to display single <mark>ALT+Numpad</mark> Keys (on Windows), or <mark>ALT</mark><mark>(ALT+SHIFT)</mark> Keys (on macOS).<br />
+								Click
+							</i></font><font size="2" style="opacity:100%"><a href="https://www.alt-codes.net" target="new">HERE</a></font><font size="2" style="opacity:45%"><i> for a complete list of available codes for ALT characters.</i></font>
+						<div class="other btn">
+							<button onclick="appendToOutput('REPEAT')">REPEAT</button>
+						</div>
+						<div class="other">
+							<button id="createAltcharButton">ALTCHAR</button>
+							<input id="charInput" type="number" maxlength="4" placeholder="Code">
+						</div>
+					</td>
+					<td width="33%">
+						<b>Modifier Keys:</b><br />
+						<font size="2" style="opacity:45%"><i><mark>GUI</mark> is used for both: the <mark>WINDOWS(&#8862;)</mark> key on Windows, and the <mark>CMD(&#8984;)</mark> key on macOS. (Targeting Windows, you can use <mark>WINDOWS</mark> key or <mark>GUI</mark> key to get the same result). <mark>CONTROL</mark> and <mark>CTRL</mark> as well. If you need to use more than one "modifier key" at once, use the preloaded "Keys Combos", which you'll find just below these Modifier keys.</i></font>
+						<div class="other btn">
+							<button onclick="appendToOutput('GUI')">GUI &#8862; / &#8984;</button>
+							<button onclick="appendToOutput('WINDOWS')">WINDOWS &#8862;</button>
+						</div>
+						<div class="other">
+							<button onclick="appendToOutput('SHIFT')">SHIFT &#8679;</button>
+							<button onclick="appendToOutput('CTRL')">CTRL &#8963;</button>
+							<button onclick="appendToOutput('ALT')">ALT &#8997;</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="container">
+			<table border="0" width="100%">
+				<tr valign="top">
+					<td width="50%">
+						<b>Combos Keys:</b><br />
+						<font size="2" style="opacity:45%"><i><b><u>ONLY</u></b> on <b>Windows</b>: <mark>CTRL-ALT</mark> is the same as to type <mark>ALTgr</mark> (ALT Graphic) and you can use both <mark>ALT-WINDOWS</mark> or <mark>ALT-GUI</mark>, and <mark>WINDOWS-SHIFT</mark> or <mark>GUI-SHIFT</mark> to get the exact same result.</i></font>
+						<div class="other btn">
+							<button onclick="appendToOutput('CTRL-ALT')">CTRL-ALT</button>
+							<button onclick="appendToOutput('CTRL-SHIFT')">CTRL-SHIFT</button>
+							<button onclick="appendToOutput('ALT-SHIFT')">ALT-SHIFT</button>
+						</div>
+						<div class="other">
+							<button onclick="appendToOutput('ALT-GUI')">ALT-GUI</button>
+							<button onclick="appendToOutput('GUI-SHIFT')">GUI-SHIFT</button>
+						</div>
+					</td>
+					<td width="50%">
+						<b>Arrow Keys / Cursor:</b><br />
+						<font size="2" style="opacity:45%"><i><mark>UP</mark> is the same as <mark>UPARROW</mark>. <mark>DOWN</mark> is the same ad <mark>DOWNARROW</mark>. <mark>LEFT</mark> is the same as <mark>LEFTARROW</mark>. <mark>RIGHT</mark> is the same as <mark>RIGHTARROW</mark>.</i></font>
+						<div class="other">
+							<table border="0" width="100%">
+								<tr valign="bottom">
+									<td width="33%"></td>
+									<td><button id="arrowButton" onclick="appendToOutput('UPARROW')">&#8593;</button></td>
+									<td width="33%"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="other">
+							<button onclick="appendToOutput('LEFTARROW')">&#8592;</button>
+							<button onclick="appendToOutput('DOWNARROW')">&#8595;</button>
+							<button onclick="appendToOutput('RIGHTARROW')">&#8594;</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="container">
+			<b>Main Control Keys:</b>
+			<div class="other">
+				<button onclick="appendToOutput('ENTER')">ENTER &#8629;</button>
+				<button onclick="appendToOutput('SPACE')">SPACE &#9251;</button>
+				<button onclick="appendToOutput('BACKSPACE')">BACK SPACE &#9003;</button>
+			</div>
+			<div class="other">
+				<button onclick="appendToOutput('TAB')">TAB &#8677;</button>
+				<button onclick="appendToOutput('CAPSLOCK')">CAPS LOCK &#8682;</button>
+				<button onclick="appendToOutput('DELETE')">DELETE &#8998;</button>
+			</div>
+		</div>
+		<div class="container">
+			<b>Others Control Keys:</b><br />
+			<font size="2" style="opacity:45%"><i>* The magic <mark>SysRq</mark> key is a key combination understood by the Linux kernel, which allows the user to perform various low-level commands regardless of the system's state. It is often used to recover from freezes, or to reboot a computer without corrupting the filesystem. (<a href="https://en.wikipedia.org/wiki/Magic_SysRq_key">Wikipedia</a>)</i></font>
+			<div class="other btn">
+				<button onclick="appendToOutput('SYSRQ')">SysRq (Linux ONLY)</button>
+				<button onclick="appendToOutput('PRINTSCREEN')">PRINT SCREEN</button>
+				<button onclick="appendToOutput('ESC')">ESC &#9099;</button>
+				<button onclick="appendToOutput('PAGEUP')">PAGE UP &#8670;</button>
+				<button onclick="appendToOutput('PAGEDOWN')">PAGE DOWN &#8671;</button>
+			</div>
+			<div class="other">
+				<button onclick="appendToOutput('NUMLOCK')">NUM LOCK</button>
+				<button onclick="appendToOutput('SCROLLOCK')">SCROLL LOCK</button>
+				<button onclick="appendToOutput('HOME')">HOME &#8598;</button>
+				<button onclick="appendToOutput('END')">END &#8600;</button>
+				<button onclick="appendToOutput('INSERT')">INSERT</button>
+			</div>
+			<div class="other">
+				<button onclick="appendToOutput('APP')">APP</button>
+				<button onclick="appendToOutput('BREAK')">BREAK</button>
+				<button onclick="appendToOutput('PAUSE')">PAUSE</button>
+				<button onclick="appendToOutput('MENU')">MENU</button>
+				<button onclick="appendToOutput('ESCAPE')">ESCAPE</button>
+			</div>
+		</div>
+		<div class="container">
+			<b>Function Keys:</b>
+			<div class="other">
+				<button onclick="appendToOutput('F1')">F1</button>
+				<button onclick="appendToOutput('F2')">F2</button>
+				<button onclick="appendToOutput('F3')">F3</button>
+				<button onclick="appendToOutput('F4')">F4</button>
+				<button onclick="appendToOutput('F5')">F5</button>
+				<button onclick="appendToOutput('F6')">F6</button>
+				<button onclick="appendToOutput('F7')">F7</button>
+				<button onclick="appendToOutput('F8')">F8</button>
+				<button onclick="appendToOutput('F9')">F9</button>
+				<button onclick="appendToOutput('F10')">F10</button>
+				<button onclick="appendToOutput('F11')">F11</button>
+				<button onclick="appendToOutput('F12')">F12</button>
+			</div>
+		</div>
+		<div class="container fondo">
+			<b></b>
+			<div class="other"></div>
+		</div>
+
+<script src="ducky.js"></script>
+	</body>
+</html>
