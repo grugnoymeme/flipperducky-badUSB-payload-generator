@@ -1,10 +1,10 @@
-    document.getElementById('createStringButton').addEventListener('click', createString);
-    document.getElementById('createAltcodeButton').addEventListener('click', createAltcode);
-    document.getElementById('createRemarkButton').addEventListener('click', createRemark);
-    document.getElementById('createAltcharButton').addEventListener('click', insertChar);
-    document.getElementById('saveButton').addEventListener('click', saveOutput);
+    document.getElementById('bottoneString').addEventListener('click', stringAte);
+    document.getElementById('bottoneAltcode').addEventListener('click', altcodeAte);
+    document.getElementById('bottoneRemark').addEventListener('click', remarkAte);
+    document.getElementById('bottoneAltchar').addEventListener('click', insertChar);
+    document.getElementById('tastoSalva').addEventListener('click', saveOutput);
 
-    function createString() {
+    function stringAte() {
       const input = document.getElementById('inputz');
       const output = document.getElementById('output');
       let translatedInput = '';
@@ -14,22 +14,21 @@
         const line = lines[i].trim();
 
         if (line === '') {
-          continue; // Skip empty lines
+          continue;
         } else {
           translatedInput += `STRING ${line}\n`;
         }
       }
 
-      // If the input does not end with a new line, append a new line to the translated input
       if (input.value[input.value.length - 1] !== '\n') {
         translatedInput += '\n';
       }
 
-      output.value += translatedInput.trim() + '\n'; // Append to the output and add a new line
-      input.value = ''; // Clear the input
+      output.value += translatedInput.trim() + '\n';
+      input.value = '';
     }
 
-    function createAltcode() {
+    function altcodeAte() {
       const input = document.getElementById('inputz');
       const output = document.getElementById('output');
       let translatedInput = '';
@@ -39,22 +38,21 @@
         const line = lines[i].trim();
 
         if (line === '') {
-          continue; // Skip empty lines
+          continue;
         } else {
           translatedInput += `ALTCODE ${line}\n`;
         }
       }
 
-      // If the input does not end with a new line, append a new line to the translated input
       if (input.value[input.value.length - 1] !== '\n') {
         translatedInput += '\n';
       }
 
-      output.value += translatedInput.trim() + '\n'; // Append to the output and add a new line
-      input.value = ''; // Clear the input
+      output.value += translatedInput.trim() + '\n';
+      input.value = '';
     }
 
-    function createRemark() {
+    function remarkAte() {
       const input = document.getElementById('input');
       const output = document.getElementById('output');
       let translatedInput = '';
@@ -64,27 +62,21 @@
         const line = lines[i].trim();
 
         if (line === '') {
-          continue; // Skip empty lines
+          continue;
         } else {
           translatedInput += `REM ${line}\n`;
         }
       }
 
-      // If the input does not end with a new line, append a new line to the translated input
       if (input.value[input.value.length - 1] !== '\n') {
         translatedInput += '\n';
       }
 
-      output.value += translatedInput.trim() + '\n'; // Append to the output and add a new line
-      input.value = ''; // Clear the input
+      output.value += translatedInput.trim() + '\n';
+      input.value = '';
     }
 
-    function hasDeadKeys(input) {
-      const deadKeys = /[`^~"'\|$%&()=?@#*]/;
-      return deadKeys.test(input);
-    }
-
-    function appendToOutput(value) {
+    function inserisciEVai(value) {
       const output = document.getElementById('output');
         output.value += value + '\n';
     }
@@ -99,19 +91,18 @@
         const line = lines[i].trim();
 
         if (line === '') {
-          continue; // Skip empty lines
+          continue;
         } else {
           translatedInput += `ALTCHAR ${line}\n`;
         }
       }
 
-      // If the input does not end with a new line, append a new line to the translated input
       if (input.value[input.value.length - 1] !== '\n') {
         translatedInput += '\n';
       }
 
-      output.value += translatedInput.trim() + '\n'; // Append to the output and add a new line
-      input.value = ''; // Clear the input
+      output.value += translatedInput.trim() + '\n';
+      input.value = '';
     }
 
     function saveOutput() {

@@ -54,80 +54,91 @@
       resize: vertical;
     }
 
-    .container {
+    .blocco {
       margin-bottom: 20px;
     }
 
-    .other {
+    .blocchetto {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(15px, 1fr));
       gap: 5px;
     }
 
-    .other button {
+	.blocco.fondo {
+	  padding-bottom: 150px;
+	}
+	
+	.blocchetto.arrows {
+	  padding-top: 20px;
+	}
+	
+	.blocchetto.btn {
+	  padding-top: 3px;
+	}
+
+    .blocchetto button {
       width: 100%;
       height: 40px;
       font-size: 12px;
       font-weight: bold;
       border: none;
-      background-color: #00aced; /* Light shade of red */
-      color: white; /* White text */
+      background-color: #00aced;
+      color: white;
       cursor: pointer;
-      border-radius: 20px; /* Added rounded corners */
+      border-radius: 20px;
       box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, 0.25);
     }
 
-    .other button:hover {
-      background-color: #0084b4; /* COLORE MOUSE HOVER */
-      color: white; /* White text */
+    .blocchetto button:hover {
+      background-color: #0084b4;
+      color: white;
 	}
 
-    .other input[type="number"],
-    .other input[type="text"] {
+    .blocchetto input[type="number"],
+    .blocchetto input[type="text"] {
       width: 100%;
       padding: 10px;
       border: 1px solid #00aced;
       border-radius: 20px;
     }
 
-    #createStringButton,
-	#createAltcodeButton,
-    #createRemarkButton,
-	#createAltcharButton;
-    #saveButton {
+    #bottoneString,
+	#bottoneAltcode,
+    #bottoneRemark,
+	#bottoneAltchar;
+    #tastoSalva {
       padding: 10px;
       border: none;
-      background-color: #00aced; /* Light shade of red */
-      color: white; /* White text */
+      background-color: #00aced;
+      color: white;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 20px; /* Added rounded corners */
+      border-radius: 20px;
     }
 
-    #createStringButton:hover,
-	#createAltcodeButton:hover,
-    #createRemarkButton:hover,
-	#createAltcharButton:hover;
-    #saveButton:hover {
-      background-color: #0084b4; /* COLORE MOUSE HOVER */
-      color: white; /* White text */
+    #bottoneString:hover,
+	#bottoneAltcode:hover,
+    #bottoneRemark:hover,
+	#bottoneAltchar:hover;
+    #tastoSalva:hover {
+      background-color: #0084b4;
+      color: white;
 	}
 
-    /* Added new styles for input fields and buttons in the "other" class */
-    .other > input[type="number"],
-    .other > input[type="text"],
-    .other > button {
+    .blocchetto > input[type="number"],
+    .blocchetto > input[type="text"],
+    .blocchetto > button {
       display: block;
       width: 100%;
       margin-bottom: 5px;
     }
 
-    .other .large-btn {
+    .blocchetto .bigButtON {
       width: 100%;
       white-space: normal;
       line-height: 1.2;
-      border-radius: 20px; /* Added rounded corners */
+      border-radius: 20px;
     }
 
     .fixed-header {
@@ -141,20 +152,7 @@
       z-index: 9999;
     }
 
-    /* Added a class to style the save button */
-    .save-button {
+    .tasto-save {
       font-family: Arial, sans-serif;
       font-size: 12px;
     }
-
-.container.fondo {
-  padding-bottom: 150px;
-}
-
-.other.arrows {
-  padding-top: 20px;
-}
-
-.other.btn {
-  padding-top: 3px;
-}
